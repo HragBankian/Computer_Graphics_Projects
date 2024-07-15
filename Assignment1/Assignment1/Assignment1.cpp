@@ -3,10 +3,46 @@
 
 #include <iostream>
 
+
+
+int* createArray(int n) {
+    int* arr = new int[n];
+    return arr;
+}
+ 
+void initializeArray(int* arr, int n) {
+    for (int i = 0; i < n; i++) {
+        arr[i] = i;
+    }
+}
+
+
+void printArray(int* arr, int n) {
+
+    std::cout << "Array: [";
+    for (int i = 0; i < n; i++) {
+        std::cout << arr[i] << ", ";
+    }
+    std::cout << std::endl << "]\n";
+}
+
+void deleteArray(int* arr) {
+    delete[] arr;
+}
+
+
 int main()
 {
+    
+    int* arr = createArray(10);
+    printArray(arr, 10);
+    initializeArray(arr, 10);
+    printArray(arr, 10);
+    deleteArray(arr);
+    
     std::cout << "Hello World!\n";
 }
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu

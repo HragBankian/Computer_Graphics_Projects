@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{425F7767-9DEA-4101-8638-E86E0420933F}|Assignment1\\Assignment1.vcxproj|C:\\Users\\gevor\\source\\repos\\371_Projects\\Assignment1\\Assignment1\\Assignment1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{425F7767-9DEA-4101-8638-E86E0420933F}|Assignment1\\Assignment1.vcxproj|solutionrelative:Assignment1\\Assignment1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{425F7767-9DEA-4101-8638-E86E0420933F}|Assignment1\\Assignment1.vcxproj|C:\\Users\\gevor\\source\\repos\\371_Projects\\Assignment1\\Assignment1\\MyArray.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{425F7767-9DEA-4101-8638-E86E0420933F}|Assignment1\\Assignment1.vcxproj|solutionrelative:Assignment1\\MyArray.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MyArray.h",
+              "DocumentMoniker": "C:\\Users\\gevor\\source\\repos\\371_Projects\\Assignment1\\Assignment1\\MyArray.h",
+              "RelativeDocumentMoniker": "Assignment1\\MyArray.h",
+              "ToolTip": "C:\\Users\\gevor\\source\\repos\\371_Projects\\Assignment1\\Assignment1\\MyArray.h",
+              "RelativeToolTip": "Assignment1\\MyArray.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-07-14T04:29:14.398Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,9 +41,9 @@
               "RelativeDocumentMoniker": "Assignment1\\Assignment1.cpp",
               "ToolTip": "C:\\Users\\gevor\\source\\repos\\371_Projects\\Assignment1\\Assignment1\\Assignment1.cpp",
               "RelativeToolTip": "Assignment1\\Assignment1.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAiAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACoAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-07-11T12:15:35.676Z",
+              "WhenOpened": "2024-07-14T04:20:31.776Z",
               "EditorCaption": ""
             },
             {
