@@ -135,7 +135,7 @@ int getValidInt() {
 // Function to interact with user and perform operations on Triangle
 void menu() {
     Triangle* triangle = nullptr;
-    char choice;
+    char choice = 'L';
 
     do {
         cout << "\nMenu:\n";
@@ -145,72 +145,91 @@ void menu() {
         cout << "4. Calculate Area\n";
         cout << "5. Exit\n";
         cout << "Enter your choice: ";
-        cin >> choice;
-
-        switch (choice) {
-        case '1': {
-            int x1, y1, z1, x2, y2, z2, x3, y3, z3;
-            cout << "Enter coordinates of vertex 1 (x y z): ";
-            x1 = getValidInt();
-            y1 = getValidInt();
-            z1 = getValidInt();
-            cout << "Enter coordinates of vertex 2 (x y z): ";
-            x2 = getValidInt();
-            y2 = getValidInt();
-            z2 = getValidInt();
-            cout << "Enter coordinates of vertex 3 (x y z): ";
-            x3 = getValidInt();
-            y3 = getValidInt();
-            z3 = getValidInt();
-            triangle = new Triangle(new Point(x1, y1, z1), new Point(x2, y2, z2), new Point(x3, y3, z3));
-            break;
-        }
-        case '2': {
-            if (triangle) {
-                int d;
-                char axis;
-                cout << "Enter distance and axis (d axis): ";
-                d = getValidInt();
-                cin >> axis;
-                if (!cin.fail() && (axis == 'x' || axis == 'y' || axis == 'z')) {
-                    triangle->translate(d, axis);
+        string choices;
+        cin >> choices;
+        if (choices.size() == 1) {
+            choice = choices[0];
+            switch (choice) {
+            case '1': {
+                int x1, y1, z1, x2, y2, z2, x3, y3, z3;
+                cout << "Enter coordinates of vertex 1: \n";
+                cout << "x: ";
+                x1 = getValidInt();
+                cout << "y: ";
+                y1 = getValidInt();
+                cout << "z: ";
+                z1 = getValidInt();
+                cout << "Enter coordinates of vertex 2: \n";
+                cout << "x: ";
+                x2 = getValidInt();
+                cout << "y: ";
+                y2 = getValidInt();
+                cout << "z: ";
+                z2 = getValidInt();
+                cout << "Enter coordinates of vertex 3: \n";
+                cout << "x: ";
+                x3 = getValidInt();
+                cout << "y: ";
+                y3 = getValidInt();
+                cout << "z: ";
+                z3 = getValidInt();
+                triangle = new Triangle(new Point(x1, y1, z1), new Point(x2, y2, z2), new Point(x3, y3, z3));
+                break;
+            }
+            case '2': {
+                if (triangle) {
+                    int d;
+                    char axis;
+                    cout << "Enter distance and axis\n";
+                    cout << "Distance of Translation: ";
+                    d = getValidInt();
+                    cout << "Axis that is being transformed (x, y or z): ";
+                    cin >> axis;
+                    if (!cin.fail() && (axis == 'x' || axis == 'y' || axis == 'z')) {
+                        triangle->translate(d, axis);
+                    }
+                    else {
+                        cout << "Invalid input.\n";
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
                 }
                 else {
-                    cout << "Invalid input.\n";
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    cout << "No triangle created.\n";
                 }
+                break;
             }
-            else {
-                cout << "No triangle created.\n";
+            case '3': {
+                if (triangle) {
+                    triangle->display();
+                }
+                else {
+                    cout << "No triangle created.\n";
+                }
+                break;
             }
-            break;
+            case '4': {
+                if (triangle) {
+                    cout << "Area: " << triangle->calcArea() << "\n";
+                }
+                else {
+                    cout << "No triangle created.\n";
+                }
+                break;
+            }
+            case '5':
+                cout << "Exiting...\n";
+                break;
+            default:
+                cout << "Invalid choice.\n";
+            }
         }
-        case '3': {
-            if (triangle) {
-                triangle->display();
-            }
-            else {
-                cout << "No triangle created.\n";
-            }
-            break;
-        }
-        case '4': {
-            if (triangle) {
-                cout << "Area: " << triangle->calcArea() << "\n";
-            }
-            else {
-                cout << "No triangle created.\n";
-            }
-            break;
-        }
-        case '5':
-            cout << "Exiting...\n";
-            break;
-        default:
+        else {
             cout << "Invalid choice.\n";
         }
     } while (choice != '5');
+    
+    
 
     delete triangle;
 }

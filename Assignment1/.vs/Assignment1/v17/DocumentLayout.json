@@ -18,8 +18,22 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Assignment1.cpp",
+              "DocumentMoniker": "C:\\Users\\gevor\\source\\repos\\371_Projects\\Assignment1\\Assignment1\\Assignment1.cpp",
+              "RelativeDocumentMoniker": "Assignment1\\Assignment1.cpp",
+              "ToolTip": "C:\\Users\\gevor\\source\\repos\\371_Projects\\Assignment1\\Assignment1\\Assignment1.cpp",
+              "RelativeToolTip": "Assignment1\\Assignment1.cpp",
+              "ViewState": "AQIAAI0AAAAAAAAAAAAAAJgAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-14T04:20:31.776Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -30,21 +44,7 @@
               "RelativeToolTip": "Assignment1\\MyArray.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-07-14T04:29:14.398Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Assignment1.cpp",
-              "DocumentMoniker": "C:\\Users\\gevor\\source\\repos\\371_Projects\\Assignment1\\Assignment1\\Assignment1.cpp",
-              "RelativeDocumentMoniker": "Assignment1\\Assignment1.cpp",
-              "ToolTip": "C:\\Users\\gevor\\source\\repos\\371_Projects\\Assignment1\\Assignment1\\Assignment1.cpp",
-              "RelativeToolTip": "Assignment1\\Assignment1.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACoAAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-07-14T04:20:31.776Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-14T04:29:14.398Z"
             },
             {
               "$type": "Bookmark",
