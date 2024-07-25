@@ -1,3 +1,10 @@
+/*
+Authors:
+1. Gevorg Markarov (40273717)
+2. Alec Kirakossian  ()
+3. Shahe Bannis (40286754)
+4. Hrag Bankian (40245363)
+*/
 #include <iostream>
 #include <cmath>
 #include <limits>
@@ -5,20 +12,32 @@
 
 using namespace std;
 
-// Function to create an array of integers
+/**
+* Function to create an array of integers of size n
+* @param n the size of the array
+* @return the pointer to the array
+ */
 int* createArray(int n) {
     int* arr = new int[n];
     return arr;
 }
 
-// Function to initialize the array
+/**
+* Function to initialize the array with values from 0 to n-1
+* @param arr the array to initialize
+* @param n the size of the array
+ */
+
 void initializeArray(int* arr, int n) {
     for (int i = 0; i < n; i++) {
         arr[i] = i;
     }
 }
 
-// Function to print the array
+/**
+* Function to print the array
+* @param arr the array to print
+ */
 void printArray(int* arr, int n) {
     cout << "Array: [";
     for (int i = 0; i < n; i++) {
@@ -30,7 +49,10 @@ void printArray(int* arr, int n) {
     cout << "]\n";
 }
 
-// Function to delete the array
+/**
+* Function to delete the array
+* @param arr the array to delete
+ */
 void deleteArray(int* arr) {
     delete[] arr;
 }
@@ -47,6 +69,12 @@ public:
         cout << "Point (" << x << ", " << y << ", " << z << ") destroyed.\n";
     }
 
+    /** 
+    * Translate the point along the specified axis by the given distance.
+    * @param d the distance to translate
+    * @param axis the axis to translate along ('x', 'y', or 'z')
+    * @return 0 if successful, -1 if invalid axis, -2 if distance is not finite
+     */
     int translate(int d, char axis) {
         if (!std::isfinite(static_cast<double>(d))) {
             return -2;
@@ -67,6 +95,9 @@ public:
         return 0;
     }
 
+    /** 
+    * Display the point in the format (x, y, z).
+     */
     void display() const {
         cout << "(" << x << ", " << y << ", " << z << ")";
     }
@@ -91,12 +122,21 @@ public:
         cout << "Triangle destroyed.\n";
     }
 
+    /**
+    * Translate the triangle along the specified axis by the given distance.
+    * @param d the distance to translate
+    * @param axis the axis to translate along ('x', 'y', or 'z')
+     */
     void translate(int d, char axis) {
         if (vertex_1) vertex_1->translate(d, axis);
         if (vertex_2) vertex_2->translate(d, axis);
         if (vertex_3) vertex_3->translate(d, axis);
     }
 
+    /**
+    * Calculate the area of the triangle.
+    * @return the area of the triangle
+     */
     double calcArea() const {
         double a = sqrt(pow(vertex_2->x - vertex_1->x, 2) + pow(vertex_2->y - vertex_1->y, 2) + pow(vertex_2->z - vertex_1->z, 2));
         double b = sqrt(pow(vertex_3->x - vertex_2->x, 2) + pow(vertex_3->y - vertex_2->y, 2) + pow(vertex_3->z - vertex_2->z, 2));
@@ -105,6 +145,9 @@ public:
         return sqrt(s * (s - a) * (s - b) * (s - c));
     }
 
+    /**
+    * Display the triangle vertices.
+     */
     void display() const {
         cout << "Triangle vertices:\n";
         if (vertex_1) vertex_1->display(); else cout << "(null)";
@@ -116,7 +159,11 @@ public:
     }
 };
 
-// Function to get valid integer input from the user
+
+/**
+* Get a valid integer input from the user.
+* @return the valid integer input
+ */
 int getValidInt() {
     int value;
     while (true) {
@@ -132,7 +179,9 @@ int getValidInt() {
     }
 }
 
-// Function to interact with user and perform operations on Triangle
+/**
+* Menu function to create and manipulate a triangle.
+ */
 void menu() {
     Triangle* triangle = nullptr;
     char choice = 'L';
