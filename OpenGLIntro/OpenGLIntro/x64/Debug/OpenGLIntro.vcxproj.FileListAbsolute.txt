@@ -1,0 +1,2 @@
+C:\Users\shahe\source\repos\OpenGLIntro\OpenGLIntro\x64\Debug\OpenGLIntro.exe
+C:\Users\shahe\Documents\GitHub\371_Projects\OpenGLIntro\OpenGLIntro\x64\Debug\OpenGLIntro.exe

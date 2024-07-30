@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\shahe\\Documents\\GitHub\\371_Projects\\OpenGLIntro\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AC969450-9786-43B5-8DE2-0795140CD46D}|OpenGLIntro\\OpenGLIntro.vcxproj|C:\\Users\\shahe\\Documents\\GitHub\\371_Projects\\OpenGLIntro\\OpenGLIntro\\OpenGLIntro.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{AC969450-9786-43B5-8DE2-0795140CD46D}|OpenGLIntro\\OpenGLIntro.vcxproj|solutionrelative:OpenGLIntro\\OpenGLIntro.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OpenGLIntro.cpp",
+              "DocumentMoniker": "C:\\Users\\shahe\\Documents\\GitHub\\371_Projects\\OpenGLIntro\\OpenGLIntro\\OpenGLIntro.cpp",
+              "RelativeDocumentMoniker": "OpenGLIntro\\OpenGLIntro.cpp",
+              "ToolTip": "C:\\Users\\shahe\\Documents\\GitHub\\371_Projects\\OpenGLIntro\\OpenGLIntro\\OpenGLIntro.cpp",
+              "RelativeToolTip": "OpenGLIntro\\OpenGLIntro.cpp",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAABcAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-07-29T19:12:01.514Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
