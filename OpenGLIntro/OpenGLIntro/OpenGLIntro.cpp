@@ -4,12 +4,12 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
-
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
 // Define Vertex and Fragment Shader
-const char *vertexShaderSource = R"glsl(
+const char* vertexShaderSource = R"glsl(
     #version 330 core
     layout (location = 0) in vec3 aPos;
     uniform mat4 transform;
@@ -18,7 +18,7 @@ const char *vertexShaderSource = R"glsl(
     }
 )glsl";
 
-const char *fragmentShaderSource = R"glsl(
+const char* fragmentShaderSource = R"glsl(
     #version 330 core
     out vec4 FragColor;
     void main() {
@@ -30,10 +30,14 @@ const char *fragmentShaderSource = R"glsl(
 float verticesTriangle[] = {
     -0.5f, -0.5f, 0.0f,
     0.5f, -0.5f, 0.0f,
-    0.0f, 0.5f, 0.0f};
+    0.0f, 0.5f, 0.0f
+};
 
 unsigned int vertexShader, fragmentShader, shaderProgram;
 
+/**
+ * @brief Compiles the vertex and fragment shaders and links them into a shader program.
+ */
 void compileShaders()
 {
     // Vertex shader
@@ -49,7 +53,7 @@ void compileShaders()
     {
         glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
         std::cerr << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n"
-                  << infoLog << std::endl;
+            << infoLog << std::endl;
     }
 
     // Fragment shader
@@ -63,7 +67,7 @@ void compileShaders()
     {
         glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
         std::cerr << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n"
-                  << infoLog << std::endl;
+            << infoLog << std::endl;
     }
 
     // Link shaders into a program
@@ -78,7 +82,7 @@ void compileShaders()
     {
         glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
         std::cerr << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n"
-                  << infoLog << std::endl;
+            << infoLog << std::endl;
     }
 
     // Clean up shaders as they're linked into our program now
@@ -87,12 +91,17 @@ void compileShaders()
 }
 
 unsigned int VBO[2], VAO[2], EBO;
+
+/**
+ * @brief Sets up the Vertex Array Object (VAO), Vertex Buffer Object (VBO), and Element Buffer Object (EBO) for the triangle.
+ */
 void setupBuffers()
 {
-    // setup the VAO, VBO and EBO
+    // Setup the VAO, VBO, and EBO
     glGenVertexArrays(2, VAO);
     glGenBuffers(2, VBO);
     glGenBuffers(1, &EBO);
+
     // Bind the VAO for the triangle
     glBindVertexArray(VAO[0]);
 
@@ -100,7 +109,7 @@ void setupBuffers()
     glBufferData(GL_ARRAY_BUFFER, sizeof(verticesTriangle), verticesTriangle, GL_STATIC_DRAW);
 
     // Set vertex attribute pointers
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
     // Unbind the VBO and VAO
@@ -108,41 +117,64 @@ void setupBuffers()
     glBindVertexArray(0);
 }
 
-void processInput(GLFWwindow* window,float& xOffset, float& yOffset, float& angle, float& scale) {
+/**
+ * @brief Processes keyboard input to control the transformations of the triangle.
+ *
+ * @param window The GLFW window.
+ * @param xOffset The x-axis offset for translation.
+ * @param yOffset The y-axis offset for translation.
+ * @param angle The angle for rotation.
+ * @param scale The scale factor.
+ */
+void processInput(GLFWwindow* window, float& xOffset, float& yOffset, float& angle, float& scale)
+{
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
         yOffset += 0.01f;
-    }else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+    }
+    else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
         yOffset -= 0.01f;
-    } else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+    }
+    else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
         xOffset -= 0.01f;
-    } else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+    }
+    else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
         xOffset += 0.01f;
     }
 
     if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) {
         angle += 30;
-    }else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
+    }
+    else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
         angle -= 30;
     }
 
-    if (glfwGetKey(window, GLFW_KEY_R == GLFW_PRESS)) {
+    if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS) {
         scale += 0.01f;
-    } else if (glfwGetKey(window, GLFW_KEY_F == GLFW_PRESS)) {
-        scale-= 0.01f;
+    }
+    else if (glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS) {
+        scale -= 0.01f;
+    }
+
+    // Ensure scale does not go below a minimum value
+    if (scale < 0.1f) {
+        scale = 0.1f;
     }
 }
 
-
+/**
+ * @brief Main function where program execution begins.
+ *
+ * @return int Returns 0 if the program executes successfully, otherwise returns -1.
+ */
 int main()
 {
-
     if (!glfwInit())
     {
         std::cerr << "Failed to initialize GLFW" << std::endl;
         return -1;
     }
 
-    GLFWwindow *window = glfwCreateWindow(800, 600, "OpenGL Triangle", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL Triangle", NULL, NULL);
 
     if (!window)
     {
@@ -159,42 +191,38 @@ int main()
         return -1;
     }
 
-    // setup Buffers
+    // Setup Buffers
     compileShaders();
     setupBuffers();
 
     glUseProgram(shaderProgram);
     int transformLoc = glGetUniformLocation(shaderProgram, "transform");
 
-
     float xOffset = 0.0f;
     float yOffset = 0.0f;
     float angle = 0.0f;
     float scale = 1.0f;
+
     while (!glfwWindowShouldClose(window))
     {
-        
-
         // Render commands
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        
-        // changes tranformation values
+        // Update transformation values
         processInput(window, xOffset, yOffset, angle, scale);
-        
+
         glm::mat4 transform = glm::mat4(1.0f);
 
-        // translation
+        // Apply translation
         transform = glm::translate(transform, glm::vec3(xOffset, yOffset, 0.0f));
-        
-        //rotation
-       transform = glm::rotate(transform, glm::radians(angle), glm::vec3(0.0f, 0.0f, 1.0f));
-       
-       // scaling TODO
-       transform = glm::scale(transform, glm::vec3(scale, scale, scale));
 
-     
+        // Apply rotation
+        transform = glm::rotate(transform, glm::radians(angle), glm::vec3(0.0f, 0.0f, 1.0f));
+
+        // Apply scaling
+        transform = glm::scale(transform, glm::vec3(scale, scale, scale));
+
         glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
 
         glUseProgram(shaderProgram);
@@ -215,6 +243,7 @@ int main()
     glfwTerminate();
     return 0;
 }
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
