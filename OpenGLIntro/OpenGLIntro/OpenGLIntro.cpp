@@ -52,7 +52,7 @@ void compileShaders()
     if (!success)
     {
         glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-        std::cerr << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n"
+        std::cerr << "ERROR: vertex compliation failed\n"
             << infoLog << std::endl;
     }
 
@@ -66,7 +66,7 @@ void compileShaders()
     if (!success)
     {
         glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-        std::cerr << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n"
+        std::cerr << "ERROR: shader compliation failed\n"
             << infoLog << std::endl;
     }
 
@@ -81,7 +81,7 @@ void compileShaders()
     if (!success)
     {
         glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-        std::cerr << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n"
+        std::cerr << "ERROR: shader program linking failed\n"
             << infoLog << std::endl;
     }
 
