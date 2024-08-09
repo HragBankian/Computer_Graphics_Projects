@@ -8,6 +8,11 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include <vector>
+#include <fstream>
+#include <sstream>
+
+
 // Define Vertex and Fragment Shader
 const char* vertexShaderSource = R"glsl(
     #version 330 core
@@ -26,12 +31,7 @@ const char* fragmentShaderSource = R"glsl(
     }
 )glsl";
 
-// Define vertices for a triangle
-float verticesTriangle[] = {
-    -0.5f, -0.5f, 0.0f,
-    0.5f, -0.5f, 0.0f,
-    0.0f, 0.5f, 0.0f
-};
+
 
 unsigned int vertexShader, fragmentShader, shaderProgram;
 
@@ -92,6 +92,8 @@ void compileShaders()
 
 unsigned int VBO[2], VAO[2], EBO;
 
+std::vector<float> vertices;
+std::vector<unsigned int> indices;
 /**
  * @brief Sets up the Vertex Array Object (VAO), Vertex Buffer Object (VBO), and Element Buffer Object (EBO) for the triangle.
  */
@@ -106,7 +108,11 @@ void setupBuffers()
     glBindVertexArray(VAO[0]);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO[0]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(verticesTriangle), verticesTriangle, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), &vertices[0], GL_STATIC_DRAW);
+
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
 
     // Set vertex attribute pointers
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
@@ -115,6 +121,73 @@ void setupBuffers()
     // Unbind the VBO and VAO
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+}
+
+
+
+bool loadOBJ(const char* path)
+{
+    std::ifstream file(path);
+    if (!file.is_open()) {
+        std::cerr << "Failed to open OBJ file" << std::endl;
+        return false;
+    }
+
+    std::vector<glm::vec3> temp_vertices;
+    std::vector<glm::vec3> temp_normals;
+    std::vector<glm::vec2> temp_texCoords;
+
+    std::string line;
+    while (std::getline(file, line)) {
+        std::istringstream s(line);
+        std::string type;
+        s >> type;
+
+        if (type == "v") {
+            glm::vec3 vertex;
+            s >> vertex.x >> vertex.y >> vertex.z;
+            temp_vertices.push_back(vertex);
+        }
+        else if (type == "vt") {
+            glm::vec2 uv;
+            s >> uv.x >> uv.y;
+            temp_texCoords.push_back(uv);
+        }
+        else if (type == "vn") {
+            glm::vec3 normal;
+            s >> normal.x >> normal.y >> normal.z;
+            temp_normals.push_back(normal);
+        }
+        else if (type == "f") {
+            unsigned int vertexIndex[3], uvIndex[3], normalIndex[3];
+            for (int i = 0; i < 3; i++) {
+                s >> vertexIndex[i];
+                if (s.peek() == '/') {
+                    s.ignore(1);
+                    if (s.peek() != '/') {
+                        s >> uvIndex[i];
+                    }
+                    if (s.peek() == '/') {
+                        s.ignore(1);
+                        s >> normalIndex[i];
+                    }
+                }
+            }
+            indices.push_back(vertexIndex[0] - 1);
+            indices.push_back(vertexIndex[1] - 1);
+            indices.push_back(vertexIndex[2] - 1);
+        }
+    }
+
+    for (unsigned int i = 0; i < indices.size(); i++) {
+        glm::vec3 vertex = temp_vertices[indices[i]];
+        vertices.push_back(vertex.x);
+        vertices.push_back(vertex.y);
+        vertices.push_back(vertex.z);
+    }
+
+    file.close();
+    return true;
 }
 
 /**
@@ -168,6 +241,7 @@ void processInput(GLFWwindow* window, float& xOffset, float& yOffset, float& ang
  */
 int main()
 {
+    
     if (!glfwInit())
     {
         std::cerr << "Failed to initialize GLFW" << std::endl;
@@ -191,6 +265,15 @@ int main()
         return -1;
     }
 
+    // Load the OBJ file
+    if (!loadOBJ("bottle.obj")) {
+        std::cerr << "Object not found";
+        return -1;
+    }
+
+    //Polygon mode makes it wareframe looking
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    
     // Setup Buffers
     compileShaders();
     setupBuffers();
@@ -227,7 +310,7 @@ int main()
 
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO[0]);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+         glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 
         glfwSwapBuffers(window);
         glfwPollEvents();

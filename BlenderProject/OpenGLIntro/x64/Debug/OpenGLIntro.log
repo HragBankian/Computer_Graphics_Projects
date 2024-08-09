@@ -1,2 +1,3 @@
 ﻿  OpenGLIntro.cpp
-  OpenGLIntro.vcxproj -> C:\Users\gevor\source\repos\371_Projects\OpenGLIntro\x64\Debug\OpenGLIntro.exe
+C:\Users\gevor\source\repos\371_Projects\BlenderProject\OpenGLIntro\OpenGLIntro.cpp(313,51): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  OpenGLIntro.vcxproj -> C:\Users\gevor\source\repos\371_Projects\BlenderProject\x64\Debug\OpenGLIntro.exe
