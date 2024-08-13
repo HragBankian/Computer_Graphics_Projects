@@ -1,0 +1,62 @@
+# Blender 4.2.0 MTL File: 'bottle (1).blend'
+# www.blender.org
+
+newmtl Cap
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.072483 0.085207 0.083120
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl Logo
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Users/gevor/OneDrive - Concordia University - Canada/Documents/GitHub/371_Projects/Assignment 3/contigo-logo(1).png
+
+newmtl Metal
+Ns 159.999985
+Ka 1.000000 1.000000 1.000000
+Kd 0.679994 0.679994 0.679994
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+
+newmtl Stainless_Steel
+Ns 145.785126
+Ka 1.000000 1.000000 1.000000
+Kd 0.031080 0.060697 0.176371
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 3
+
+newmtl black_plastic
+Ns 72.102188
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl contigo
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/Users/gevor/OneDrive - Concordia University - Canada/Documents/GitHub/371_Projects/Assignment 3/contigo-logo.png
