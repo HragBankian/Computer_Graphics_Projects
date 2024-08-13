@@ -1,4 +1,4 @@
 ﻿  OpenGLIntro.cpp
-C:\Users\gevor\source\repos\371_Projects\BlenderProject\OpenGLIntro\OpenGLIntro.cpp(320,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\gevor\source\repos\371_Projects\BlenderProject\OpenGLIntro\OpenGLIntro.cpp(371,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   OpenGLIntro.vcxproj -> C:\Users\gevor\source\repos\371_Projects\BlenderProject\x64\Debug\OpenGLIntro.exe
